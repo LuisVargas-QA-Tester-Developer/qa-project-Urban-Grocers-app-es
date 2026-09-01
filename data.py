@@ -18,25 +18,12 @@ kit_body = {
     "name": "Miprimerkit"
 }
 
-#CAMPO "name" CON 511 CARACTERES, LO MÁXIMO PERMITIDO PARA ESTE CAMPO. USARLO PARA PRUEBA POSITIVA
-#DEBERÁ ARROJAR CÓDIGO 201.
+# Campo "name" con 511 caracteres: máximo permitido.
+# Caso límite positivo: se espera código 201.
 
-kit_body511 = {"name":"Abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabc"
-            "dabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcda"
-            "bcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdab"
-            "cdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcda"
-            "bcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd"
-            "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdab"
-            "cdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC"}
+kit_name_511 = 'a' * 511
 
-#CAMPO "name" CON 512 CARACTERES, UN CARACTER DE MAS POR ENCIMA DE LO PERMITIDO. USARLO EN PRUEBA NEGATIVA
-#DEBERÁ ARROJAR CÓDIGO 400
+# Campo "name" con 512 caracteres: supera el máximo permitido.
+# Caso límite negativo: se espera código 400.
 
-kit_body512 = {"name":"Abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabc"
-            "dabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcda"
-            "bcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdab"
-            "cdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcda"
-            "bcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd"
-            "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdab"
-            "cdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcD"}
-
+kit_name_512 = 'a' * 512

@@ -64,7 +64,7 @@ def test_create_kit_name_1_character():
 
 #Prueba 2---------511 caracteres maximo permitidos
 def test_create_kit_name_511_character():
-    possitive_assert_create_kit(data.kit_body511)
+    possitive_assert_create_kit(data.kit_name_511)
 
 #----------------------------------------------------------
 
@@ -76,7 +76,7 @@ def test_create_kit_name_0_character():
 
 #Prueba 4------------512__caracteres, esta por fuera del rango permitido
 def test_create_kit_name_512_character():
-    negative_assert_create_kit(data.kit_body512)
+    negative_assert_create_kit(data.kit_name_512)
 
 #---------------------------------------------------------------
 
