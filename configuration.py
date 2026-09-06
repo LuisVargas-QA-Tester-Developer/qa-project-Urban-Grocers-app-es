@@ -1,8 +1,13 @@
-                    #URL_SERVICE, almacena la ruta del servidor
+                    #URL_SERVICE, variable de entorno, almacena la url del servidor
                     #CREATE_USER_PATH, almacena la ruta para crear un nuevo usuario
                     #KITS_PATH, almacena la ruta para crear un nuevo kit
 
-URL_SERVICE = "https://cnt-5b836af9-c356-4cd1-a663-c6fedf8c689c.containerhub.tripleten-services.com"
+import os
+
+URL_SERVICE = os.getenv("URL_SERVICE")
+
+if not URL_SERVICE:
+    raise RuntimeError("URL_SERVICE environment variable is not set")
 
 CREATE_USER_PATH = "/api/v1/users"
 
