@@ -46,10 +46,9 @@ def negative_assert_create_kit(name):
     token_user = sender_stand_request.post_create_new_user()
     body_kit = get_body_kit(name)
     response_kit = sender_stand_request.post_create_new_kits(body_kit, token_user)
-    print(response_kit.json())
-    print(
-    "RESPONSE REQUEST KITS: " + str(response_kit.json().get("user").get("authToken")) + " código de estado: " + str(
-    response_kit.status_code))
+    print("Response request kits: ", response_kit.text)
+    print("Status code: ", response_kit.status_code)
+
     assert response_kit.status_code == 400
 
 #PRUEBAS PARA EL CAMPO "name", VERIFICACIÓN DEL CÓDIGO DE ESTADO EN LA RESPUESTA DE LA SOLICITUD AL CREAR UN NUEVO KIT.
