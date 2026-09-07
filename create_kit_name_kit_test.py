@@ -1,7 +1,6 @@
 #IMPORTACIÓN DE ARCHIVOS REQUERIDOS
 import sender_stand_request
 import data
-from sender_stand_request import post_create_new_user
 
 #FUNCION PARA OBTENER CUERPO QUE SE INCLUIRÁ EN LA SOLICITUD PARA CREAR UN NUEVO KIT
 def get_body_kit(name=None):
@@ -14,13 +13,13 @@ def get_body_kit(name=None):
 
 #FUNCIÓN PARA REALIZAR PRUEBAS POSITIVAS EN LA CREACIÓN DE NUEVOS KITS Y COMPROBAR CÓDIGO DE ESTADO 201
 
-def possitive_assert_create_kit(name):
+def create_kit_and_assert_success(name):
 
-                        # token_user almacena token de usuario.
-                        # body_kit almacena estructura json parametros para el nuevo kit
-                        # response_kit almacena respuesta de la solicitud crear nuevo kit
-                        # print() Imprime respuesta
-                        # assert comprueba que el código de estado sea el correcto con criterio falso o verdadero
+    # token_user almacena token de usuario.
+    # body_kit almacena estructura json parametros para el nuevo kit
+    # response_kit almacena respuesta de la solicitud crear nuevo kit
+    # print() Imprime respuesta
+    # assert comprueba que el código de estado sea el correcto con criterio falso o verdadero
 
     token_user = sender_stand_request.post_create_new_user()
     print("------------------------------------------------------")
@@ -35,13 +34,13 @@ def possitive_assert_create_kit(name):
 
 #FUNCIÓN PARA REALIZAR PRUEBAS NEGATIVAS EN LA CREACIÓN DE NUEVOS KITS Y COMPROBAR CÓDIGO DE ESTADO 400
 
-def negative_assert_create_kit(name):
+def create_kit_and_assert_error(name):
 
-                        #token_user almacena token de usuario.
-                        # body_kit almacena estructura json parametros para el nuevo kit
-                        #response_kit almacena respuesta de la solicitud crear nuevo kit
-                        #print() Imprime respuesta
-                        #assert comprueba que el código de estado sea el correcto con criterio falso o verdadero
+    #token_user almacena token de usuario.
+    # body_kit almacena estructura json parametros para el nuevo kit
+    #response_kit almacena respuesta de la solicitud crear nuevo kit
+    #print() Imprime respuesta
+    #assert comprueba que el código de estado sea el correcto con criterio falso o verdadero
 
     token_user = sender_stand_request.post_create_new_user()
     body_kit = get_body_kit(name)
@@ -56,56 +55,56 @@ def negative_assert_create_kit(name):
 #----------------------------------------------------------
 
 #Prueba 1-----------UN CARACTER EN LA PROPIEDAD "name"
-def test_create_kit_name_1_character():
-    possitive_assert_create_kit("f")
+def test_create_kit_name_with_1_character():
+    create_kit_and_assert_success("f")
 
 #--------------------------------------------------------
 
 #Prueba 2---------511 caracteres maximo permitidos
-def test_create_kit_name_511_character():
-    possitive_assert_create_kit(data.kit_name_511)
+def test_create_kit_name_with_511_characters():
+    create_kit_and_assert_success(data.kit_name_511)
 
 #----------------------------------------------------------
 
 #Prueba 3--------no se permite campo vacio
-def test_create_kit_name_0_character():
-    negative_assert_create_kit("")
+def test_create_kit_name_with_empty_string():
+    create_kit_and_assert_error("")
 
 #-------------------------------------------------------------
 
 #Prueba 4------------512__caracteres, esta por fuera del rango permitido
-def test_create_kit_name_512_character():
-    negative_assert_create_kit(data.kit_name_512)
+def test_create_kit_name_with_512_characters():
+    create_kit_and_assert_error(data.kit_name_512)
 
 #---------------------------------------------------------------
 
 #Prueba 5------------Se permite caracteres especiales en el campo
-def test_create_kit_name_special_characters():
-    possitive_assert_create_kit('№%@".-_,')
+def test_create_kit_name_with_special_characters():
+    create_kit_and_assert_success('№%@".-_,')
 
 #---------------------------------------------------------------
 
 #Prueba 6---------------Se permite espacios en el campo
-def test_create_kit_empty_name():
-    possitive_assert_create_kit("A aa")
+def test_create_kit_name_with_spaces():
+    create_kit_and_assert_success("A aa")
 
 #-----------------------------------------------------------------
 
 #Prueba 7------------------Se permite numeros como string
-def test_create_kit_name_numbers():
-    possitive_assert_create_kit("123")
+def test_create_kit_name_with_numeric_string():
+    create_kit_and_assert_success("123")
 
 #-----------------------------------------------------------------
 
 #Prueba 8---------------campo ausente, no se envia el parametro "name"
-def test_create_kit_name_missing_parameter():
-    negative_assert_create_kit(None)
+def test_create_kit_name_with_missing_name_parameter():
+    create_kit_and_assert_error(None)
 
 #-------------------------------------------------------------------
 
-#Prueba 9----------------No se valores numerico en el campo.
-def test_create_kit_numbers_date_name():
-    negative_assert_create_kit(123)
+#Prueba 9----------------No se permite valores numericos en el campo.
+def test_create_kit_name_with_number_type():
+    create_kit_and_assert_error(123)
 
 #---------------------------------------------------------------------
 
