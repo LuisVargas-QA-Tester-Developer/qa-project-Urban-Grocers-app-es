@@ -28,8 +28,3 @@ def post_create_new_kits(body_kit, token_user):
     response = requests.post(configuration.URL_SERVICE + configuration.KITS_PATH,
     json=body_kit, headers={"Content-Type": "application/json", "Authorization": "Bearer " + f"{token_user}"})
     return response
-
-#FUNCIÓN PARA OBTENER LOS KITS DE UN USUARIO ESPECÍFICO
-def get_all_kits(token_user):
-    response = requests.get(configuration.URL_SERVICE + configuration.KITS_PATH, headers={"Content-Type": "application/json", "Authorization": "Bearer " + f"{token_user}"})
-    return response
