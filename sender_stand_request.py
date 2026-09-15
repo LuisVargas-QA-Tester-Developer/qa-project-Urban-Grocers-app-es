@@ -9,10 +9,16 @@ def post_create_new_user():
     #Solicitud crear nuevo usuario
     response =  requests.post(configuration.URL_SERVICE + configuration.CREATE_USER_PATH,
                          json = data.user_body, headers=data.headers)
+    # Comprueba que el usuario se haya creado correctamente antes de obtener el token.
+    assert response.status_code == 201, (
+        f"Error al crear el usuario. "
+        f"Status code: {response.status_code}. "
+        f"Response: {response.text}"
+    )
     #Almacenar respuesta
-    response = response.json()
-    #Obtener el token
-    token_user = response["authToken"]
+    response_body = response.json()
+
+    token_user = response_body["authToken"]
     return token_user
 
 #FUNCIÓN PARA CREAR UN NUEVO KIT INCLUYENDO UN TOKEN DE USUARIO EXISTENTE EN EL ENCABEZADO DE LA SOLICITUD
