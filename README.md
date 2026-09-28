@@ -1,8 +1,18 @@
 # Proyecto Urban Grocers
 
-Proyecto de pruebas automatizadas de API para validar el campo `name` durante la creación de kits en Urban Grocers.
+## Sobre Urban Grocers
 
-Las pruebas crean un usuario, obtienen su token de autenticación y realizan solicitudes para crear kits con diferentes valores en el campo `name`, verificando el código de estado esperado según los requisitos.
+Urban Grocers es una aplicación de compra de productos de abarrotes que permite a sus usuarios organizar productos mediante kits.
+
+Un kit representa un conjunto de productos agrupados bajo un nombre, por ejemplo, un kit de desayuno que puede incluir leche, pan y huevos. Cada kit se crea asociado a un usuario específico.
+
+Dentro del flujo probado en este proyecto, se crea un usuario, se obtiene su token de autenticación y se utiliza ese token para solicitar la creación de un kit.
+
+## Objetivo de las pruebas
+
+Este proyecto automatiza pruebas de API sobre la creación de kits, enfocándose específicamente en las validaciones del campo `name`.
+
+La suite utiliza diferentes valores y tipos de datos para comprobar el comportamiento del campo según los requisitos definidos.
 
 ## Tecnologías
 
